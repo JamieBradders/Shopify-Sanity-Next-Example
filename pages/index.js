@@ -9,24 +9,55 @@ function HomePage({ data }) {
   const { homepageData, collection } = data;
 
   return (
-    <main className="bg-gray-50">
-      <div className="h-96 bg-indigo-500 flex justify-center items-center">
-        <h1 className="text-white font-semibold text-6xl">
-          {homepageData.heroTitle}
-        </h1>
-      </div>
+    <>
+      <main className="bg-gray-50">
+        <div className="h-96 bg-indigo-500 flex justify-center items-center px-4">
+          <h1 className="text-white font-semibold text-6xl">
+            {homepageData.heroTitle}
+          </h1>
+        </div>
 
-      {collection?.products?.edges.length > 0 && (
-        <section className="container mx-auto py-12">
-          <h2 className="font-semibold text-4xl mb-8">Featured Products</h2>
-          <div className="grid grid-flow-row grid-cols-3 grid-rows-auto gap-8">
-            {collection.products.edges.map((product) => {
-              return <ProductCard product={product} />;
-            })}
-          </div>
-        </section>
-      )}
-    </main>
+        {collection?.products?.edges.length > 0 && (
+          <section className="container mx-auto py-12 px-4">
+            <h2 className="font-semibold text-4xl mb-8">Featured Products</h2>
+            <div className="grid grid-flow-row sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-rows-auto gap-8">
+              {collection.products.edges.map((product) => {
+                return <ProductCard product={product} />;
+              })}
+            </div>
+          </section>
+        )}
+      </main>
+
+      <footer className="text-center py-4">
+        <p>
+          Developed with{" "}
+          <a
+            href="https://sanity.io"
+            target="_blank"
+            className="text-indigo-500 font-medium"
+          >
+            Sanity
+          </a>
+          ,{" "}
+          <a
+            href="https://shopify.com"
+            target="_blank"
+            className="text-indigo-500 font-medium"
+          >
+            Shopify
+          </a>{" "}
+          &amp;{" "}
+          <a
+            href="https://nextjs.org"
+            target="_blank"
+            className="text-indigo-500 font-medium"
+          >
+            Next.js
+          </a>
+        </p>
+      </footer>
+    </>
   );
 }
 
